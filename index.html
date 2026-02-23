@@ -62,7 +62,6 @@
         }
         .chat-container::-webkit-scrollbar { display: none; }
         
-        /* View Transitions */
         .view-enter {
             animation: viewFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
@@ -122,7 +121,6 @@
             box-shadow: 0 4px 12px rgba(74, 55, 40, 0.2);
         }
 
-        /* Expanding FAB Animation */
         .nav-expand-enter {
             animation: fabSlideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
@@ -131,7 +129,6 @@
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* IWD Content Styling */
         .iwd-content h4 {
             font-family: 'Playfair Display', serif;
             font-weight: 900;
@@ -177,16 +174,17 @@
             { name: "Katherine Johnson", bio: "A brilliant mathematician whose calculations were critical to the success of the first U.S. crewed spaceflights. Her work at NASA proved that human intelligence is the ultimate engine of discovery." },
             { name: "Mkoba", bio: "Black Gay Boiiiii. Also likes dih. Du-du-du-du MAX VESTAPPEN, Du-du-du-du" },
             { name: "Tea Masala", bio: "Tumfukuze shule. Anatupigia watoto wetu. HATUMTAKIIIII." },
-            { name: "Baraka Van Pastory Shija", bio: "BTW |Van Pastory| is Dutch, However HE IS NOT DUTCH. Goes by |https://www.instagram.com/b.vanp?igsh=dzNndnYxZzVhYW1o|" }
+            { 
+              name: "Baraka Van Pastory Shija", 
+              bio: html`BTW |Van Pastory| is Dutch, However HE IS NOT DUTCH. Check him out: <a href="https://www.instagram.com/b.vanp?igsh=dzNndnYxZzVhYW1o" target="_blank" className="text-gold font-bold underline">Instagram</a> | <a href="https://www.google.com/url?sa=i&source=web&rct=j&url=https://x.com/bvanp10&ved=2ahUKEwiJjcetnfCSAxWpTaQEHWdKGKQQy_kOegYIAQgCEAE&opi=89978449&cd&psig=AOvVaw1SCL4JxRC6H8PSVm2MttLF&ust=1771957268374000" target="_blank" className="text-gold font-bold underline">X/Twitter</a>` 
+            }
         ];
 
         const IWD_TIMELINE = [
             { year: "1909", title: "The First National Woman's Day", desc: "Observed in the United States on February 28, in honor of the 1908 garment workers' strike in New York." },
             { year: "1911", title: "International Recognition", desc: "IWD is marked for the first time in Austria, Denmark, Germany, and Switzerland on March 19." },
             { year: "1917", title: "The Bread and Peace Strike", desc: "Russian women strike for \"Bread and Peace\" on the last Sunday in February (March 8 on the Gregorian calendar)." },
-            { year: "2015", title: "Max Vestappen", desc: "The year Max Verstappen made his Formula 1 debut at the Australian Grand Prix, becoming the youngest driver in the history of the sport at just 17 years old." },
-
-" }
+            { year: "2015", title: "Max Vestappen", desc: "The year Max Verstappen made his Formula 1 debut at the Australian Grand Prix, becoming the youngest driver in the history of the sport at just 17 years old." }
         ];
 
         const IWD_STATS = [
@@ -241,7 +239,7 @@
                                 <div className="w-16 h-16 bg-brown text-gold rounded-full flex items-center justify-center mb-8 mx-auto shadow-xl">
                                     <span className="material-icons-round text-4xl">auto_awesome</span>
                                 </div>
-                                <h2 className="font-serif text-5xl lg:text-6xl font-black text-brown mb-4 italic tracking-tighter">Interface Ready.</h2>
+                                <h2 className="font-serif text-5xl lg:text-6xl font-black text-brown mb-4 italic tracking-tighter text-balance">Interface Ready.</h2>
                                 <p className="text-brown/40 font-serif italic text-xl max-w-sm mx-auto leading-relaxed text-balance">Explore the collective wisdom of human history.</p>
                             </div>
                         `}
@@ -259,7 +257,7 @@
                                     <span className="w-1.5 h-1.5 bg-gold rounded-full"></span>
                                     <span className="w-1.5 h-1.5 bg-gold rounded-full"></span>
                                 </div>
-                                <span className="text-[0.6rem] font-black uppercase tracking-widest opacity-40">Processing request...</span>
+                                <span className="text-[0.6rem] font-black uppercase tracking-widest opacity-40 text-balance">Processing request...</span>
                             </div>
                         `}
                         <div ref=${chatEndRef} className="h-4"></div>
@@ -374,7 +372,7 @@
                 <div className="max-w-4xl mx-auto">
                     <div className="mb-12 lg:mb-16">
                         <h2 className="font-serif text-5xl lg:text-9xl font-black italic text-brown tracking-tighter">The <br/><span className="text-gold">Archive</span></h2>
-                        <p className="text-brown/40 font-serif italic text-xl mt-4">Personnel files and technical biographies.</p>
+                        <p className="text-brown/40 font-serif italic text-xl mt-4 text-balance">Personnel files and technical biographies.</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                         ${VAULT_DATA.map((h, i) => html`
@@ -384,7 +382,7 @@
                                     <span className="text-[0.55rem] font-black text-gold uppercase tracking-[0.4em]">Entry #${i+1}</span>
                                 </div>
                                 <h3 className="font-serif text-3xl lg:text-4xl font-black text-brown mb-4 lg:mb-6 italic group-hover:text-gold transition-colors">${h.name}</h3>
-                                <p className="text-brown/60 font-serif text-lg lg:text-xl italic leading-relaxed">${h.bio}</p>
+                                <div className="text-brown/60 font-serif text-lg lg:text-xl italic leading-relaxed">${h.bio}</div>
                             </div>
                         `)}
                     </div>
@@ -397,49 +395,26 @@
                 <div className="max-w-2xl mx-auto">
                     <div className="mb-12 text-center">
                         <h2 className="font-serif text-5xl lg:text-6xl font-black italic text-brown tracking-tighter">System <br/><span className="text-gold">Calibration</span></h2>
-                        <p className="text-brown/40 font-serif italic mt-2">Modify connection parameters for logic engines.</p>
+                        <p className="text-brown/40 font-serif italic mt-2 text-balance">Modify connection parameters for logic engines.</p>
                     </div>
                     <div className="bg-white p-10 lg:p-12 rounded-[2.5rem] border border-brown/5 shadow-sm space-y-10">
                         <div className="space-y-4">
-                            <label className="text-[0.6rem] font-black uppercase text-brown/40 tracking-widest block ml-2">Active Logic Provider</label>
+                            <label className="text-[0.6rem] font-black uppercase text-brown/40 tracking-widest block ml-2 text-balance">Active Logic Provider</label>
                             <div className="flex gap-2 p-1 bg-brown/5 rounded-2xl">
-                                <button 
-                                    onClick=${() => { setProvider('OPENROUTER'); localStorage.setItem('oracle_provider', 'OPENROUTER'); }} 
-                                    className=${`flex-1 py-3 rounded-xl text-[0.6rem] font-black uppercase tracking-widest transition-all ${provider === 'OPENROUTER' ? 'provider-btn-active' : 'text-brown/40'}`}
-                                >OpenRouter</button>
-                                <button 
-                                    onClick=${() => { setProvider('GROQ'); localStorage.setItem('oracle_provider', 'GROQ'); }} 
-                                    className=${`flex-1 py-3 rounded-xl text-[0.6rem] font-black uppercase tracking-widest transition-all ${provider === 'GROQ' ? 'provider-btn-active' : 'text-brown/40'}`}
-                                >Groq</button>
+                                <button onClick=${() => { setProvider('OPENROUTER'); localStorage.setItem('oracle_provider', 'OPENROUTER'); }} className=${`flex-1 py-3 rounded-xl text-[0.6rem] font-black uppercase tracking-widest transition-all ${provider === 'OPENROUTER' ? 'provider-btn-active' : 'text-brown/40'}`}>OpenRouter</button>
+                                <button onClick=${() => { setProvider('GROQ'); localStorage.setItem('oracle_provider', 'GROQ'); }} className=${`flex-1 py-3 rounded-xl text-[0.6rem] font-black uppercase tracking-widest transition-all ${provider === 'GROQ' ? 'provider-btn-active' : 'text-brown/40'}`}>Groq</button>
                             </div>
                         </div>
-
                         <div className="space-y-4">
-                            <label className="text-[0.6rem] font-black uppercase text-brown/40 tracking-widest block ml-2">
-                                ${provider} Authorization Token
-                            </label>
-                            <input 
-                                type="password"
-                                value=${provider === 'GROQ' ? groqToken : orToken}
-                                onChange=${e => {
-                                    const val = e.target.value;
-                                    if (provider === 'GROQ') {
-                                        setGroqToken(val);
-                                        localStorage.setItem('groq_token', val);
-                                    } else {
-                                        setOrToken(val); 
-                                        localStorage.setItem('or_token', val);
-                                    }
-                                }}
-                                placeholder=${provider === 'GROQ' ? "Enter gsk_..." : "Enter sk-or-..."}
-                                className="w-full px-6 py-4 rounded-2xl bg-brown/5 border border-brown/10 outline-none focus:border-gold font-mono text-sm"
-                            />
-                            ${provider === 'GROQ' && html`
-                                <p className="text-[0.55rem] font-bold text-gold uppercase tracking-widest ml-2">Engine: Gemma 2 (9B-IT)</p>
-                            `}
+                            <label className="text-[0.6rem] font-black uppercase text-brown/40 tracking-widest block ml-2 text-balance">${provider} Authorization Token</label>
+                            <input type="password" value=${provider === 'GROQ' ? groqToken : orToken} onChange=${e => {
+                                const val = e.target.value;
+                                if (provider === 'GROQ') { setGroqToken(val); localStorage.setItem('groq_token', val); }
+                                else { setOrToken(val); localStorage.setItem('or_token', val); }
+                            }} placeholder=${provider === 'GROQ' ? "Enter gsk_..." : "Enter sk-or-..."} className="w-full px-6 py-4 rounded-2xl bg-brown/5 border border-brown/10 outline-none focus:border-gold font-mono text-sm" />
+                            ${provider === 'GROQ' && html`<p className="text-[0.55rem] font-bold text-gold uppercase tracking-widest ml-2 text-balance">Engine: Gemma 2 (9B-IT)</p>`}
                         </div>
-
-                        <button onClick=${logout} className="w-full py-4 border border-red-800/20 text-red-800/40 rounded-2xl text-[0.65rem] font-bold uppercase tracking-widest hover:bg-red-800 hover:text-white transition-all">Clear Connection Keys</button>
+                        <button onClick=${logout} className="w-full py-4 border border-red-800/20 text-red-800/40 rounded-2xl text-[0.65rem] font-bold uppercase tracking-widest hover:bg-red-800 hover:text-white transition-all text-balance">Clear Connection Keys</button>
                     </div>
                 </div>
             </div>
@@ -450,7 +425,6 @@
             const [orToken, setOrToken] = useState(localStorage.getItem('or_token') || '');
             const [groqToken, setGroqToken] = useState(localStorage.getItem('groq_token') || '');
             const [speechEnabled, setSpeechEnabled] = useState(localStorage.getItem('speech_enabled') === 'true');
-            
             const [activeTab, setActiveTab] = useState('ORACLE');
             const [navExpanded, setNavExpanded] = useState(false);
             const [query, setQuery] = useState('');
@@ -471,34 +445,18 @@
 
             const speakWisdom = (text) => {
                 if (!speechEnabled || !window.speechSynthesis) return;
-                
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance(text);
                 const voices = window.speechSynthesis.getVoices();
-
-                const voicePatterns = ['Google UK English Male', 'Google UK English Female', 'Microsoft Libere', 'Premium', 'en-GB'];
-
-                let selectedVoice = null;
-                for (const pattern of voicePatterns) {
-                    selectedVoice = voices.find(v => v.name.includes(pattern) || v.lang === pattern);
-                    if (selectedVoice) break;
-                }
-
+                const selectedVoice = voices.find(v => v.name.includes('Google UK English Male') || v.lang === 'en-GB');
                 if (selectedVoice) utterance.voice = selectedVoice;
-                
-                utterance.pitch = 0.95; 
-                utterance.rate = 0.92; 
-                utterance.volume = 1;
-
+                utterance.pitch = 0.95; utterance.rate = 0.92;
                 window.speechSynthesis.speak(utterance);
             };
 
             const logout = () => {
-                localStorage.removeItem('or_token');
-                localStorage.removeItem('groq_token');
-                localStorage.removeItem('oracle_provider');
-                setOrToken('');
-                setGroqToken('');
+                localStorage.removeItem('or_token'); localStorage.removeItem('groq_token'); localStorage.removeItem('oracle_provider');
+                setOrToken(''); setGroqToken('');
             };
 
             const toggleSpeech = () => {
@@ -510,133 +468,55 @@
 
             const callOracle = async () => {
                 if (!query.trim() || loading) return;
-                
                 const currentToken = provider === 'GROQ' ? groqToken : orToken;
-                
-                if (!currentToken || currentToken.trim() === "") {
-                    setChat(prev => [...prev, 
-                        { role: 'user', content: query.trim() },
-                        { role: 'assistant', content: `System Error: Missing ${provider} credentials. Update Core Config to proceed.` }
-                    ]);
-                    setQuery('');
+                if (!currentToken) {
+                    setChat(prev => [...prev, { role: 'user', content: query.trim() }, { role: 'assistant', content: `System Error: Missing ${provider} credentials.` }]);
                     return;
                 }
-
                 const userMsg = query.trim();
                 setChat(prev => [...prev, { role: 'user', content: userMsg }]);
-                setQuery('');
-                setLoading(true);
-
+                setQuery(''); setLoading(true);
                 try {
-                    let response;
-                    if (provider === 'GROQ') {
-                        response = await fetch(
-                            "https://api.groq.com/openai/v1/chat/completions",
-                            {
-                                headers: { 
-                                    "Authorization": `Bearer ${groqToken}`, 
-                                    "Content-Type": "application/json"
-                                },
-                                method: "POST",
-                                body: JSON.stringify({ 
-                                    model: "gemma2-9b-it",
-                                    messages: [
-                                        { role: "system", content: SYSTEM_PROMPT },
-                                        ...chat.slice(-4),
-                                        { role: "user", content: userMsg }
-                                    ],
-                                    max_tokens: 512,
-                                    temperature: 0.3
-                                }),
-                            }
-                        );
-                    } else {
-                        response = await fetch(
-                            "https://openrouter.ai/api/v1/chat/completions",
-                            {
-                                headers: { 
-                                    "Authorization": `Bearer ${orToken}`, 
-                                    "Content-Type": "application/json",
-                                    "HTTP-Referer": window.location.href,
-                                    "X-Title": "The Oracle"
-                                },
-                                method: "POST",
-                                body: JSON.stringify({ 
-                                    model: "meta-llama/llama-3.2-3b-instruct",
-                                    messages: [
-                                        { role: "system", content: SYSTEM_PROMPT },
-                                        ...chat.slice(-4),
-                                        { role: "user", content: userMsg }
-                                    ],
-                                    max_tokens: 512,
-                                    temperature: 0.3
-                                }),
-                            }
-                        );
-                    }
-                    
-                    if (!response.ok) {
-                        const err = await response.json();
-                        throw new Error(err.error?.message || err.error || "Connection Interrupted");
-                    }
-                    
+                    const endpoint = provider === 'GROQ' ? "https://api.groq.com/openai/v1/chat/completions" : "https://openrouter.ai/api/v1/chat/completions";
+                    const model = provider === 'GROQ' ? "gemma2-9b-it" : "meta-llama/llama-3.2-3b-instruct";
+                    const response = await fetch(endpoint, {
+                        headers: { "Authorization": `Bearer ${currentToken}`, "Content-Type": "application/json" },
+                        method: "POST",
+                        body: JSON.stringify({ model, messages: [{ role: "system", content: SYSTEM_PROMPT }, ...chat.slice(-4), { role: "user", content: userMsg }], max_tokens: 512, temperature: 0.3 }),
+                    });
                     const result = await response.json();
                     const text = result.choices?.[0]?.message?.content || "No data returned.";
-                    
-                    const trimmedText = text.trim();
-                    setChat(prev => [...prev, { role: 'assistant', content: trimmedText }]);
-                    
-                    setTimeout(() => speakWisdom(trimmedText), 300);
+                    setChat(prev => [...prev, { role: 'assistant', content: text.trim() }]);
+                    speakWisdom(text.trim());
                 } catch (err) {
-                    setChat(prev => [...prev, { role: 'assistant', content: `Logical Fault: ${err.message}. Check Config.` }]);
-                } finally {
-                    setLoading(false);
-                }
+                    setChat(prev => [...prev, { role: 'assistant', content: `Logical Fault: ${err.message}` }]);
+                } finally { setLoading(false); }
             };
 
             return html`
                 <div className="flex h-full w-full overflow-hidden">
-                    <!-- Sidebar (Desktop) -->
                     <aside className="hidden lg:flex w-64 bg-white border-r border-brown/5 flex-col p-8 z-50 shrink-0">
                         <div className="flex items-center gap-3 mb-12">
                             <div className="w-10 h-10 bg-brown text-gold rounded-xl flex items-center justify-center font-black italic shadow-sm uppercase">O</div>
                             <div>
-                                <h1 className="text-[0.6rem] font-black uppercase tracking-[0.2em] text-brown">The Oracle</h1>
-                                <p className="text-[0.5rem] font-bold text-gold uppercase tracking-[0.1em]">A Human-Centered Guide</p>
+                                <h1 className="text-[0.6rem] font-black uppercase tracking-[0.2em] text-brown text-balance">The Oracle</h1>
+                                <p className="text-[0.5rem] font-bold text-gold uppercase tracking-[0.1em] text-balance">A Human-Centered Guide</p>
                             </div>
                         </div>
                         <nav className="flex-1 space-y-2">
-                            ${[
-                                { id: 'ORACLE', icon: 'auto_awesome', label: 'Query Interface' },
-                                { id: 'IWD', icon: 'female', label: 'IWD Data' },
-                                { id: 'RECORDS', icon: 'menu_book', label: 'The Archive' },
-                                { id: 'CONFIG', icon: 'tune', label: 'System Config' }
-                            ].map(item => html`
-                                <button 
-                                    key=${item.id}
-                                    onClick=${() => setActiveTab(item.id)}
-                                    className=${`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all ${activeTab === item.id ? 'sidebar-active font-bold' : 'text-brown/30 hover:bg-brown/5'}`}
-                                >
+                            ${[{ id: 'ORACLE', icon: 'auto_awesome', label: 'Query Interface' }, { id: 'IWD', icon: 'female', label: 'IWD Data' }, { id: 'RECORDS', icon: 'menu_book', label: 'The Archive' }, { id: 'CONFIG', icon: 'tune', label: 'System Config' }].map(item => html`
+                                <button key=${item.id} onClick=${() => setActiveTab(item.id)} className=${`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all ${activeTab === item.id ? 'sidebar-active font-bold' : 'text-brown/30 hover:bg-brown/5'}`}>
                                     <span className="material-icons-round text-xl">${item.icon}</span>
-                                    <span className="text-[0.65rem] font-bold uppercase tracking-widest">${item.label}</span>
+                                    <span className="text-[0.65rem] font-bold uppercase tracking-widest text-balance">${item.label}</span>
                                 </button>
                             `)}
                         </nav>
-                        
                         <div className="mt-auto pt-6 border-t border-brown/5">
                             <button onClick=${toggleSpeech} className=${`w-full mb-4 flex items-center gap-4 px-4 py-3 rounded-xl transition-all ${speechEnabled ? 'text-gold bg-brown/5' : 'text-brown/20'}`}>
                                 <span className="material-icons-round text-xl">${speechEnabled ? 'volume_up' : 'volume_off'}</span>
-                                <span className="text-[0.6rem] font-bold uppercase tracking-widest">${speechEnabled ? 'Output Active' : 'Output Muted'}</span>
+                                <span className="text-[0.6rem] font-bold uppercase tracking-widest text-balance">${speechEnabled ? 'Output Active' : 'Output Muted'}</span>
                             </button>
-                            <div className="mb-4 px-4 py-2 bg-brown/5 rounded-xl text-center">
-                                <p className="text-[0.4rem] font-black text-brown/30 uppercase tracking-widest">System Status</p>
-                                <p className="text-[0.6rem] font-bold text-gold uppercase tracking-tighter">${provider} Active</p>
-                            </div>
-                            <div className="mb-6 text-center opacity-40 hover:opacity-100 transition-opacity">
-                                <p className="font-serif italic text-[0.7rem] text-brown">With care,</p>
-                                <p className="font-serif font-black italic text-brown tracking-tighter text-sm">The Curator</p>
-                            </div>
-                            <button onClick=${logout} className="flex items-center gap-4 px-4 py-3.5 text-red-800/30 hover:text-red-800 transition-colors">
+                            <button onClick=${logout} className="flex items-center gap-4 px-4 py-3.5 text-red-800/30 hover:text-red-800 transition-colors text-balance">
                                 <span className="material-icons-round text-xl">power_settings_new</span>
                                 <span className="text-[0.65rem] font-bold uppercase tracking-widest">Wipe Memory</span>
                             </button>
@@ -644,57 +524,34 @@
                     </aside>
 
                     <main className="flex-1 flex flex-col min-h-0 relative bg-vellum vellum-texture">
-                        <!-- Mobile Header -->
                         <header className="lg:hidden p-4 bg-white border-b border-brown/5 flex items-center justify-between z-50 shrink-0">
                             <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 bg-brown text-gold rounded-lg flex items-center justify-center text-xs font-black italic uppercase">O</div>
-                                <span className="text-[0.6rem] font-black uppercase tracking-widest text-brown tracking-tighter">The Oracle</span>
+                                <span className="text-[0.6rem] font-black uppercase tracking-widest text-brown tracking-tighter text-balance">The Oracle</span>
                             </div>
-                            <div className="flex items-center gap-4">
-                                <button onClick=${toggleSpeech} className=${speechEnabled ? 'text-gold' : 'text-brown/20'}>
-                                    <span className="material-icons-round">volume_up</span>
-                                </button>
-                            </div>
+                            <button onClick=${toggleSpeech} className=${speechEnabled ? 'text-gold' : 'text-brown/20'}>
+                                <span className="material-icons-round">volume_up</span>
+                            </button>
                         </header>
-
                         <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
                             ${activeTab === 'ORACLE' ? html`<${OracleTab} chat=${chat} loading=${loading} query=${query} setQuery=${setQuery} callOracle=${callOracle} chatEndRef=${chatEndRef} />` : 
                               activeTab === 'IWD' ? html`<${IWDTab} />` : 
                               activeTab === 'RECORDS' ? html`<${RecordsTab} />` : 
                               html`<${ConfigTab} provider=${provider} setProvider=${setProvider} orToken=${orToken} setOrToken=${setOrToken} groqToken=${groqToken} setGroqToken=${setGroqToken} logout=${logout} />`}
                         </div>
-
-                        <!-- Mobile Floating Navigation Hub -->
                         <nav className="lg:hidden fixed bottom-28 right-6 z-[100] flex flex-col items-center gap-3">
                             ${navExpanded && html`
                                 <div className="flex flex-col gap-3 mb-2">
-                                    ${[
-                                        { id: 'ORACLE', icon: 'auto_awesome' },
-                                        { id: 'IWD', icon: 'female' },
-                                        { id: 'RECORDS', icon: 'menu_book' },
-                                        { id: 'CONFIG', icon: 'tune' }
-                                    ].filter(item => item.id !== activeTab).map((item, i) => html`
-                                        <button 
-                                            key=${item.id} 
-                                            onClick=${() => { setActiveTab(item.id); setNavExpanded(false); }} 
-                                            className="w-12 h-12 rounded-full bg-white border border-brown/10 text-brown shadow-xl flex items-center justify-center transition-all active:scale-90 nav-expand-enter"
-                                            style=${{ animationDelay: `${i * 0.05}s` }}
-                                        >
+                                    ${[{ id: 'ORACLE', icon: 'auto_awesome' }, { id: 'IWD', icon: 'female' }, { id: 'RECORDS', icon: 'menu_book' }, { id: 'CONFIG', icon: 'tune' }].filter(item => item.id !== activeTab).map((item, i) => html`
+                                        <button key=${item.id} onClick=${() => { setActiveTab(item.id); setNavExpanded(false); }} className="w-12 h-12 rounded-full bg-white border border-brown/10 text-brown shadow-xl flex items-center justify-center nav-expand-enter" style=${{ animationDelay: `${i * 0.05}s` }}>
                                             <span className="material-icons-round text-xl">${item.icon}</span>
                                         </button>
                                     `)}
                                 </div>
                             `}
-                            <button 
-                                onClick=${() => setNavExpanded(!navExpanded)} 
-                                className="w-14 h-14 rounded-full bg-brown text-gold shadow-2xl flex items-center justify-center transition-all active:scale-95"
-                            >
+                            <button onClick=${() => setNavExpanded(!navExpanded)} className="w-14 h-14 rounded-full bg-brown text-gold shadow-2xl flex items-center justify-center transition-all active:scale-95">
                                 <span className=${`material-icons-round text-2xl transition-transform duration-300 ${navExpanded ? 'rotate-45' : ''}`}>
-                                    ${navExpanded ? 'add' : (
-                                        activeTab === 'ORACLE' ? 'auto_awesome' : 
-                                        activeTab === 'IWD' ? 'female' : 
-                                        activeTab === 'RECORDS' ? 'menu_book' : 'tune'
-                                    )}
+                                    ${navExpanded ? 'add' : (activeTab === 'ORACLE' ? 'auto_awesome' : activeTab === 'IWD' ? 'female' : activeTab === 'RECORDS' ? 'menu_book' : 'tune')}
                                 </span>
                             </button>
                         </nav>
